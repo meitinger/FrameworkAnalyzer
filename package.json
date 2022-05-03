@@ -1,6 +1,6 @@
 {
   "name": "framework_analyzer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Monotone Framework analyzer for WHILE language programs.",
   "homepage": "https://meitinger.github.io/FrameworkAnalyzer/",
   "source": "index.html",

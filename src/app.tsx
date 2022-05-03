@@ -87,8 +87,8 @@ export const App: React.FC = () => {
 
   return (
     <div className='uk-margin-top uk-margin-left uk-margin-right'>
-      <ul ref={gridDiv} className='uk-grid-small uk-child-width-expand@s' data-uk-sortable='handle: .uk-card-header' data-uk-grid='masonry: true'>
-        <li className='uk-width-1-2'>
+      <ul ref={gridDiv} className='uk-grid-small uk-child-width-1-2@m' data-uk-sortable='handle: .uk-card-header' data-uk-grid='masonry: true'>
+        <li>
           <div className='uk-card uk-card-default'>
             <div className='uk-card-header'>
               <h3 className='uk-card-title'>
@@ -111,7 +111,7 @@ export const App: React.FC = () => {
               </div>)}
           </div>
         </li>
-        <li className='uk-width-1-2'>
+        <li>
           <div className='uk-card uk-card-default'>
             <div className='uk-card-header'>
               <h3 className='uk-card-title'>
@@ -136,7 +136,7 @@ export const App: React.FC = () => {
             {solverError !== undefined && <div className='uk-card-footer uk-alert-danger'>{solverError.message}</div>}
           </div>
         </li>
-        <li className='uk-width-1-2'>
+        <li>
           <div className='uk-card uk-card-default'>
             <div className='uk-card-header'>
               <h3 className='uk-card-title'>Variables</h3>
@@ -164,7 +164,7 @@ export const App: React.FC = () => {
             {runnerError !== undefined && <div className='uk-card-footer uk-alert-danger'>{runnerError.message}</div>}
           </div>
         </li>
-        <li className='uk-width-1-2'>
+        <li>
           <div className='uk-card uk-card-default'>
             <div className='uk-card-header'>
               <h3 className='uk-card-title'>Analysis</h3>
@@ -198,7 +198,7 @@ export const App: React.FC = () => {
             </div>
           </div>
         </li>
-        <li className='uk-width-1-2'>
+        <li>
           <div className='uk-card uk-card-default'>
             <div className='uk-card-header'>
               <h3 className='uk-card-title'>Flow Graph</h3>
