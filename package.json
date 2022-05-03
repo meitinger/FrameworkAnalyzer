@@ -35,7 +35,7 @@
     "vite": "^2.9.7"
   },
   "scripts": {
-    "build": "vite build",
+    "build": "vite build --base=/FrameworkAnalyzer/",
     "start": "vite",
     "test": "eslint ./src --ext .ts,.tsx"
   }
