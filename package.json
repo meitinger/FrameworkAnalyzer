@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Monotone Framework analyzer for WHILE language programs.",
   "homepage": "https://meitinger.github.io/FrameworkAnalyzer/",
-  "source": "src/index.html",
+  "source": "index.html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "dependencies": {
     "monaco-editor": "^0.31.0",
@@ -36,7 +36,7 @@
   },
   "scripts": {
     "build": "vite build --base=/FrameworkAnalyzer/",
-    "start": "vite",
+    "dev": "vite",
     "test": "eslint ./src --ext .ts,.tsx"
   }
 }

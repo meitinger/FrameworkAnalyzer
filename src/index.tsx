@@ -18,13 +18,13 @@
 
 import * as React from 'react'
 import { render } from 'react-dom'
-import uikit from 'uikit'
+import UIkit from 'uikit'
 import 'uikit/dist/css/uikit.min.css'
 import Icons from 'uikit/dist/js/uikit-icons'
 import { App } from './app'
 import { registerLanguage, registerLibraries } from './language'
 
-uikit.use(Icons)
+UIkit.use(Icons)
 
 self.MonacoEnvironment = {
   getWorker: (_workerId: string, label: string): Worker => label === 'typescript'
@@ -33,7 +33,7 @@ self.MonacoEnvironment = {
 }
 
 const alert = (message: string): void => {
-  uikit.modal.alert(message).catch(() => window.alert(message))
+  UIkit.modal.alert(message).catch(() => window.alert(message))
 }
 
 try { registerLanguage() } catch { alert('Failed to register WHILE language. Code highlighting and completion will not be available.') }

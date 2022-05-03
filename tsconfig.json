@@ -20,7 +20,7 @@
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "strict": true,
-    "target": "ESnext"
+    "target": "ESNext"
   },
   "include": [
     "src"
