@@ -4,8 +4,5 @@
     "*.d.ts": [
       "@parcel/transformer-raw"
     ]
-  },
-  "optimizers": {
-    "*.js": []
   }
 }
