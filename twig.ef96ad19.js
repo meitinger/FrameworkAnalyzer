@@ -1,0 +1,901 @@
+// modules are defined as an array
+// [ module function, map of requires ]
+//
+// map of requires is short require name -> numeric require
+//
+// anything defined in a previous bundle is accessed via the
+// orig method which is the require for previous bundles
+
+(function (modules, entry, mainEntry, parcelRequireName, globalName) {
+  /* eslint-disable no-undef */
+  var globalObject =
+    typeof globalThis !== 'undefined'
+      ? globalThis
+      : typeof self !== 'undefined'
+      ? self
+      : typeof window !== 'undefined'
+      ? window
+      : typeof global !== 'undefined'
+      ? global
+      : {};
+  /* eslint-enable no-undef */
+
+  // Save the require from previous bundle to this closure if any
+  var previousRequire =
+    typeof globalObject[parcelRequireName] === 'function' &&
+    globalObject[parcelRequireName];
+
+  var cache = previousRequire.cache || {};
+  // Do not use `require` to prevent Webpack from trying to bundle this call
+  var nodeRequire =
+    typeof module !== 'undefined' &&
+    typeof module.require === 'function' &&
+    module.require.bind(module);
+
+  function newRequire(name, jumped) {
+    if (!cache[name]) {
+      if (!modules[name]) {
+        // if we cannot find the module within our internal map or
+        // cache jump to the current global require ie. the last bundle
+        // that was added to the page.
+        var currentRequire =
+          typeof globalObject[parcelRequireName] === 'function' &&
+          globalObject[parcelRequireName];
+        if (!jumped && currentRequire) {
+          return currentRequire(name, true);
+        }
+
+        // If there are other bundles on this page the require from the
+        // previous one is saved to 'previousRequire'. Repeat this as
+        // many times as there are bundles until the module is found or
+        // we exhaust the require chain.
+        if (previousRequire) {
+          return previousRequire(name, true);
+        }
+
+        // Try the node require function if it exists.
+        if (nodeRequire && typeof name === 'string') {
+          return nodeRequire(name);
+        }
+
+        var err = new Error("Cannot find module '" + name + "'");
+        err.code = 'MODULE_NOT_FOUND';
+        throw err;
+      }
+
+      localRequire.resolve = resolve;
+      localRequire.cache = {};
+
+      var module = (cache[name] = new newRequire.Module(name));
+
+      modules[name][0].call(
+        module.exports,
+        localRequire,
+        module,
+        module.exports,
+        this
+      );
+    }
+
+    return cache[name].exports;
+
+    function localRequire(x) {
+      var res = localRequire.resolve(x);
+      return res === false ? {} : newRequire(res);
+    }
+
+    function resolve(x) {
+      var id = modules[name][1][x];
+      return id != null ? id : x;
+    }
+  }
+
+  function Module(moduleName) {
+    this.id = moduleName;
+    this.bundle = newRequire;
+    this.exports = {};
+  }
+
+  newRequire.isParcelRequire = true;
+  newRequire.Module = Module;
+  newRequire.modules = modules;
+  newRequire.cache = cache;
+  newRequire.parent = previousRequire;
+  newRequire.register = function (id, exports) {
+    modules[id] = [
+      function (require, module) {
+        module.exports = exports;
+      },
+      {},
+    ];
+  };
+
+  Object.defineProperty(newRequire, 'root', {
+    get: function () {
+      return globalObject[parcelRequireName];
+    },
+  });
+
+  globalObject[parcelRequireName] = newRequire;
+
+  for (var i = 0; i < entry.length; i++) {
+    newRequire(entry[i]);
+  }
+
+  if (mainEntry) {
+    // Expose entry point to Node, AMD or browser globals
+    // Based on https://github.com/ForbesLindesay/umd/blob/master/template.js
+    var mainExports = newRequire(mainEntry);
+
+    // CommonJS
+    if (typeof exports === 'object' && typeof module !== 'undefined') {
+      module.exports = mainExports;
+
+      // RequireJS
+    } else if (typeof define === 'function' && define.amd) {
+      define(function () {
+        return mainExports;
+      });
+
+      // <script>
+    } else if (globalName) {
+      this[globalName] = mainExports;
+    }
+  }
+})({"iEKIM":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "conf", function() {
+    return conf;
+});
+parcelHelpers.export(exports, "language", function() {
+    return language;
+});
+/*!-----------------------------------------------------------------------------
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Version: 0.31.1(337587859b1c171314b40503171188b6cea6a32a)
+ * Released under the MIT license
+ * https://github.com/microsoft/monaco-editor/blob/main/LICENSE.txt
+ *-----------------------------------------------------------------------------*/ // src/basic-languages/twig/twig.ts
+var conf = {
+    wordPattern: /(-?\d*\.\d\w*)|([^\`\~\!\@\$\^\&\*\(\)\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\s]+)/g,
+    comments: {
+        blockComment: [
+            "{#",
+            "#}"
+        ]
+    },
+    brackets: [
+        [
+            "{#",
+            "#}"
+        ],
+        [
+            "{%",
+            "%}"
+        ],
+        [
+            "{{",
+            "}}"
+        ],
+        [
+            "(",
+            ")"
+        ],
+        [
+            "[",
+            "]"
+        ],
+        [
+            "<!--",
+            "-->"
+        ],
+        [
+            "<",
+            ">"
+        ]
+    ],
+    autoClosingPairs: [
+        {
+            open: "{# ",
+            close: " #}"
+        },
+        {
+            open: "{% ",
+            close: " %}"
+        },
+        {
+            open: "{{ ",
+            close: " }}"
+        },
+        {
+            open: "[",
+            close: "]"
+        },
+        {
+            open: "(",
+            close: ")"
+        },
+        {
+            open: '"',
+            close: '"'
+        },
+        {
+            open: "'",
+            close: "'"
+        }
+    ],
+    surroundingPairs: [
+        {
+            open: '"',
+            close: '"'
+        },
+        {
+            open: "'",
+            close: "'"
+        },
+        {
+            open: "<",
+            close: ">"
+        }
+    ]
+};
+var language = {
+    defaultToken: "",
+    tokenPostfix: "",
+    ignoreCase: true,
+    keywords: [
+        "apply",
+        "autoescape",
+        "block",
+        "deprecated",
+        "do",
+        "embed",
+        "extends",
+        "flush",
+        "for",
+        "from",
+        "if",
+        "import",
+        "include",
+        "macro",
+        "sandbox",
+        "set",
+        "use",
+        "verbatim",
+        "with",
+        "endapply",
+        "endautoescape",
+        "endblock",
+        "endembed",
+        "endfor",
+        "endif",
+        "endmacro",
+        "endsandbox",
+        "endset",
+        "endwith",
+        "true",
+        "false"
+    ],
+    tokenizer: {
+        root: [
+            [
+                /\s+/
+            ],
+            [
+                /{#/,
+                "comment.twig",
+                "@commentState"
+            ],
+            [
+                /{%[-~]?/,
+                "delimiter.twig",
+                "@blockState"
+            ],
+            [
+                /{{[-~]?/,
+                "delimiter.twig",
+                "@variableState"
+            ],
+            [
+                /<!DOCTYPE/,
+                "metatag.html",
+                "@doctype"
+            ],
+            [
+                /<!--/,
+                "comment.html",
+                "@comment"
+            ],
+            [
+                /(<)((?:[\w\-]+:)?[\w\-]+)(\s*)(\/>)/,
+                [
+                    "delimiter.html",
+                    "tag.html",
+                    "",
+                    "delimiter.html"
+                ]
+            ],
+            [
+                /(<)(script)/,
+                [
+                    "delimiter.html",
+                    {
+                        token: "tag.html",
+                        next: "@script"
+                    }
+                ]
+            ],
+            [
+                /(<)(style)/,
+                [
+                    "delimiter.html",
+                    {
+                        token: "tag.html",
+                        next: "@style"
+                    }
+                ]
+            ],
+            [
+                /(<)((?:[\w\-]+:)?[\w\-]+)/,
+                [
+                    "delimiter.html",
+                    {
+                        token: "tag.html",
+                        next: "@otherTag"
+                    }
+                ]
+            ],
+            [
+                /(<\/)((?:[\w\-]+:)?[\w\-]+)/,
+                [
+                    "delimiter.html",
+                    {
+                        token: "tag.html",
+                        next: "@otherTag"
+                    }
+                ]
+            ],
+            [
+                /</,
+                "delimiter.html"
+            ],
+            [
+                /[^<]+/
+            ]
+        ],
+        commentState: [
+            [
+                /#}/,
+                "comment.twig",
+                "@pop"
+            ],
+            [
+                /./,
+                "comment.twig"
+            ]
+        ],
+        blockState: [
+            [
+                /[-~]?%}/,
+                "delimiter.twig",
+                "@pop"
+            ],
+            [
+                /\s+/
+            ],
+            [
+                /(verbatim)(\s*)([-~]?%})/,
+                [
+                    "keyword.twig",
+                    "",
+                    {
+                        token: "delimiter.twig",
+                        next: "@rawDataState"
+                    }
+                ]
+            ],
+            {
+                include: "expression"
+            }
+        ],
+        rawDataState: [
+            [
+                /({%[-~]?)(\s*)(endverbatim)(\s*)([-~]?%})/,
+                [
+                    "delimiter.twig",
+                    "",
+                    "keyword.twig",
+                    "",
+                    {
+                        token: "delimiter.twig",
+                        next: "@popall"
+                    }
+                ]
+            ],
+            [
+                /./,
+                "string.twig"
+            ]
+        ],
+        variableState: [
+            [
+                /[-~]?}}/,
+                "delimiter.twig",
+                "@pop"
+            ],
+            {
+                include: "expression"
+            }
+        ],
+        stringState: [
+            [
+                /"/,
+                "string.twig",
+                "@pop"
+            ],
+            [
+                /#{\s*/,
+                "string.twig",
+                "@interpolationState"
+            ],
+            [
+                /[^#"\\]*(?:(?:\\.|#(?!\{))[^#"\\]*)*/,
+                "string.twig"
+            ]
+        ],
+        interpolationState: [
+            [
+                /}/,
+                "string.twig",
+                "@pop"
+            ],
+            {
+                include: "expression"
+            }
+        ],
+        expression: [
+            [
+                /\s+/
+            ],
+            [
+                /\+|-|\/{1,2}|%|\*{1,2}/,
+                "operators.twig"
+            ],
+            [
+                /(and|or|not|b-and|b-xor|b-or)(\s+)/,
+                [
+                    "operators.twig",
+                    ""
+                ]
+            ],
+            [
+                /==|!=|<|>|>=|<=/,
+                "operators.twig"
+            ],
+            [
+                /(starts with|ends with|matches)(\s+)/,
+                [
+                    "operators.twig",
+                    ""
+                ]
+            ],
+            [
+                /(in)(\s+)/,
+                [
+                    "operators.twig",
+                    ""
+                ]
+            ],
+            [
+                /(is)(\s+)/,
+                [
+                    "operators.twig",
+                    ""
+                ]
+            ],
+            [
+                /\||~|:|\.{1,2}|\?{1,2}/,
+                "operators.twig"
+            ],
+            [
+                /[^\W\d][\w]*/,
+                {
+                    cases: {
+                        "@keywords": "keyword.twig",
+                        "@default": "variable.twig"
+                    }
+                }
+            ],
+            [
+                /\d+(\.\d+)?/,
+                "number.twig"
+            ],
+            [
+                /\(|\)|\[|\]|{|}|,/,
+                "delimiter.twig"
+            ],
+            [
+                /"([^#"\\]*(?:\\.[^#"\\]*)*)"|\'([^\'\\]*(?:\\.[^\'\\]*)*)\'/,
+                "string.twig"
+            ],
+            [
+                /"/,
+                "string.twig",
+                "@stringState"
+            ],
+            [
+                /=>/,
+                "operators.twig"
+            ],
+            [
+                /=/,
+                "operators.twig"
+            ]
+        ],
+        doctype: [
+            [
+                /[^>]+/,
+                "metatag.content.html"
+            ],
+            [
+                />/,
+                "metatag.html",
+                "@pop"
+            ]
+        ],
+        comment: [
+            [
+                /-->/,
+                "comment.html",
+                "@pop"
+            ],
+            [
+                /[^-]+/,
+                "comment.content.html"
+            ],
+            [
+                /./,
+                "comment.content.html"
+            ]
+        ],
+        otherTag: [
+            [
+                /\/?>/,
+                "delimiter.html",
+                "@pop"
+            ],
+            [
+                /"([^"]*)"/,
+                "attribute.value.html"
+            ],
+            [
+                /'([^']*)'/,
+                "attribute.value.html"
+            ],
+            [
+                /[\w\-]+/,
+                "attribute.name.html"
+            ],
+            [
+                /=/,
+                "delimiter.html"
+            ],
+            [
+                /[ \t\r\n]+/
+            ]
+        ],
+        script: [
+            [
+                /type/,
+                "attribute.name.html",
+                "@scriptAfterType"
+            ],
+            [
+                /"([^"]*)"/,
+                "attribute.value.html"
+            ],
+            [
+                /'([^']*)'/,
+                "attribute.value.html"
+            ],
+            [
+                /[\w\-]+/,
+                "attribute.name.html"
+            ],
+            [
+                /=/,
+                "delimiter.html"
+            ],
+            [
+                />/,
+                {
+                    token: "delimiter.html",
+                    next: "@scriptEmbedded",
+                    nextEmbedded: "text/javascript"
+                }
+            ],
+            [
+                /[ \t\r\n]+/
+            ],
+            [
+                /(<\/)(script\s*)(>)/,
+                [
+                    "delimiter.html",
+                    "tag.html",
+                    {
+                        token: "delimiter.html",
+                        next: "@pop"
+                    }
+                ]
+            ]
+        ],
+        scriptAfterType: [
+            [
+                /=/,
+                "delimiter.html",
+                "@scriptAfterTypeEquals"
+            ],
+            [
+                />/,
+                {
+                    token: "delimiter.html",
+                    next: "@scriptEmbedded",
+                    nextEmbedded: "text/javascript"
+                }
+            ],
+            [
+                /[ \t\r\n]+/
+            ],
+            [
+                /<\/script\s*>/,
+                {
+                    token: "@rematch",
+                    next: "@pop"
+                }
+            ]
+        ],
+        scriptAfterTypeEquals: [
+            [
+                /"([^"]*)"/,
+                {
+                    token: "attribute.value.html",
+                    switchTo: "@scriptWithCustomType.$1"
+                }
+            ],
+            [
+                /'([^']*)'/,
+                {
+                    token: "attribute.value.html",
+                    switchTo: "@scriptWithCustomType.$1"
+                }
+            ],
+            [
+                />/,
+                {
+                    token: "delimiter.html",
+                    next: "@scriptEmbedded",
+                    nextEmbedded: "text/javascript"
+                }
+            ],
+            [
+                /[ \t\r\n]+/
+            ],
+            [
+                /<\/script\s*>/,
+                {
+                    token: "@rematch",
+                    next: "@pop"
+                }
+            ]
+        ],
+        scriptWithCustomType: [
+            [
+                />/,
+                {
+                    token: "delimiter.html",
+                    next: "@scriptEmbedded.$S2",
+                    nextEmbedded: "$S2"
+                }
+            ],
+            [
+                /"([^"]*)"/,
+                "attribute.value.html"
+            ],
+            [
+                /'([^']*)'/,
+                "attribute.value.html"
+            ],
+            [
+                /[\w\-]+/,
+                "attribute.name.html"
+            ],
+            [
+                /=/,
+                "delimiter.html"
+            ],
+            [
+                /[ \t\r\n]+/
+            ],
+            [
+                /<\/script\s*>/,
+                {
+                    token: "@rematch",
+                    next: "@pop"
+                }
+            ]
+        ],
+        scriptEmbedded: [
+            [
+                /<\/script/,
+                {
+                    token: "@rematch",
+                    next: "@pop",
+                    nextEmbedded: "@pop"
+                }
+            ],
+            [
+                /[^<]+/,
+                ""
+            ]
+        ],
+        style: [
+            [
+                /type/,
+                "attribute.name.html",
+                "@styleAfterType"
+            ],
+            [
+                /"([^"]*)"/,
+                "attribute.value.html"
+            ],
+            [
+                /'([^']*)'/,
+                "attribute.value.html"
+            ],
+            [
+                /[\w\-]+/,
+                "attribute.name.html"
+            ],
+            [
+                /=/,
+                "delimiter.html"
+            ],
+            [
+                />/,
+                {
+                    token: "delimiter.html",
+                    next: "@styleEmbedded",
+                    nextEmbedded: "text/css"
+                }
+            ],
+            [
+                /[ \t\r\n]+/
+            ],
+            [
+                /(<\/)(style\s*)(>)/,
+                [
+                    "delimiter.html",
+                    "tag.html",
+                    {
+                        token: "delimiter.html",
+                        next: "@pop"
+                    }
+                ]
+            ]
+        ],
+        styleAfterType: [
+            [
+                /=/,
+                "delimiter.html",
+                "@styleAfterTypeEquals"
+            ],
+            [
+                />/,
+                {
+                    token: "delimiter.html",
+                    next: "@styleEmbedded",
+                    nextEmbedded: "text/css"
+                }
+            ],
+            [
+                /[ \t\r\n]+/
+            ],
+            [
+                /<\/style\s*>/,
+                {
+                    token: "@rematch",
+                    next: "@pop"
+                }
+            ]
+        ],
+        styleAfterTypeEquals: [
+            [
+                /"([^"]*)"/,
+                {
+                    token: "attribute.value.html",
+                    switchTo: "@styleWithCustomType.$1"
+                }
+            ],
+            [
+                /'([^']*)'/,
+                {
+                    token: "attribute.value.html",
+                    switchTo: "@styleWithCustomType.$1"
+                }
+            ],
+            [
+                />/,
+                {
+                    token: "delimiter.html",
+                    next: "@styleEmbedded",
+                    nextEmbedded: "text/css"
+                }
+            ],
+            [
+                /[ \t\r\n]+/
+            ],
+            [
+                /<\/style\s*>/,
+                {
+                    token: "@rematch",
+                    next: "@pop"
+                }
+            ]
+        ],
+        styleWithCustomType: [
+            [
+                />/,
+                {
+                    token: "delimiter.html",
+                    next: "@styleEmbedded.$S2",
+                    nextEmbedded: "$S2"
+                }
+            ],
+            [
+                /"([^"]*)"/,
+                "attribute.value.html"
+            ],
+            [
+                /'([^']*)'/,
+                "attribute.value.html"
+            ],
+            [
+                /[\w\-]+/,
+                "attribute.name.html"
+            ],
+            [
+                /=/,
+                "delimiter.html"
+            ],
+            [
+                /[ \t\r\n]+/
+            ],
+            [
+                /<\/style\s*>/,
+                {
+                    token: "@rematch",
+                    next: "@pop"
+                }
+            ]
+        ],
+        styleEmbedded: [
+            [
+                /<\/style/,
+                {
+                    token: "@rematch",
+                    next: "@pop",
+                    nextEmbedded: "@pop"
+                }
+            ],
+            [
+                /[^<]+/,
+                ""
+            ]
+        ]
+    }
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}]},[], null, "parcelRequire3aa6")
+
+//# sourceMappingURL=twig.ef96ad19.js.map
