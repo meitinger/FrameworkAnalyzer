@@ -19,7 +19,6 @@
 import * as monaco from 'monaco-editor'
 import environment from './environment.d.ts?raw'
 import framework from './framework.d.ts?raw'
-import { _throw } from './helpers'
 import program from './program.d.ts?raw'
 
 export const languageId = 'while'
