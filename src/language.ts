@@ -17,7 +17,10 @@
  */
 
 import * as monaco from 'monaco-editor'
+import environment from './environment.d.ts?raw'
+import framework from './framework.d.ts?raw'
 import { _throw } from './helpers'
+import program from './program.d.ts?raw'
 
 export const languageId = 'while'
 
@@ -60,23 +63,10 @@ export class InlayHintsProvider implements monaco.languages.InlayHintsProvider {
   }
 }
 
-export const registerLibraries = async (): Promise<void> => {
-  const fetchUrl = async (url: URL): Promise<string> => {
-    const response = await fetch(url.toString())
-    return await (response.ok ? response.text() : _throw(new Error(response.statusText)))
-  }
-  const register = (filePath: string): (content: string) => void => {
-    return content => monaco.languages.typescript.typescriptDefaults.addExtraLib(content, filePath)
-  }
-  await Promise.all([
-    fetchUrl(new URL('program.d.ts', import.meta.url))
-      .then(register('program.d.ts')),
-    fetchUrl(new URL('framework.d.ts', import.meta.url))
-      .then(register('framework.d.ts')),
-    fetchUrl(new URL('environment.d.ts', import.meta.url))
-      .then(content => content.replaceAll('readonly', 'const').replace('export interface Environment', 'define global'))
-      .then(register('environment.d.ts'))
-  ])
+export const registerLibraries = (): void => {
+  monaco.languages.typescript.typescriptDefaults.addExtraLib(program as string, './program.d.ts')
+  monaco.languages.typescript.typescriptDefaults.addExtraLib(framework as string, './framework.d.ts')
+  monaco.languages.typescript.typescriptDefaults.addExtraLib((environment as string).replaceAll('readonly', 'const').replace('export interface Environment', 'define global'), './environment.d.ts')
 }
 
 export const registerLanguage = (): void => {

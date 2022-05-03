@@ -37,7 +37,7 @@ const alert = (message: string): void => {
 }
 
 try { registerLanguage() } catch { alert('Failed to register WHILE language. Code highlighting and completion will not be available.') }
-registerLibraries().catch(() => alert('Failed to register type libraries. Framework and helper definitions will not be available.'))
+try { registerLibraries() } catch { alert('Failed to register type libraries. Framework and helper definitions will not be available.') }
 
 render(
   <React.StrictMode>
