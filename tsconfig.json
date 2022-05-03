@@ -20,9 +20,9 @@
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "strict": true,
-    "target": "ES6"
+    "target": "ESnext"
   },
   "include": [
     "src"
-, "src/.environment.d.ts"  ]
+  ]
 }

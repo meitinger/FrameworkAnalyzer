@@ -27,9 +27,9 @@ import { registerLanguage, registerLibraries } from './language'
 uikit.use(Icons)
 
 self.MonacoEnvironment = {
-  getWorkerUrl: (_workerId: string, label: string): URL => label === 'typescript'
-    ? new URL('./../node_modules/monaco-editor/esm/vs/language/typescript/ts.worker.js', import.meta.url)
-    : new URL('./../node_modules/monaco-editor/esm/vs/editor/editor.worker.js', import.meta.url)
+  getWorker: (_workerId: string, label: string): Worker => label === 'typescript'
+    ? new Worker(new URL('./../node_modules/monaco-editor/esm/vs/language/typescript/ts.worker.js', import.meta.url), { type: 'module' })
+    : new Worker(new URL('./../node_modules/monaco-editor/esm/vs/editor/editor.worker.js', import.meta.url), { type: 'module' })
 }
 
 const alert = (message: string): void => {
