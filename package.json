@@ -10,12 +10,12 @@
     "parsimmon": "^1.18.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "typescript": "^4.6.3",
-    "uikit": "^3.13.10",
+    "typescript": "^4.6.4",
+    "uikit": "^3.14.0",
     "viz.js": "^2.1.2"
   },
   "devDependencies": {
-    "@parcel/packager-ts": "^2.4.1",
+    "@parcel/packager-ts": "^2.5.0",
     "@types/parsimmon": "^1.10.6",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
@@ -34,7 +34,7 @@
     "eslint-plugin-promise": "^5.2.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.4.0",
-    "parcel": "^2.4.1",
+    "parcel": "^2.5.0",
     "process": "^0.11.10"
   },
   "scripts": {

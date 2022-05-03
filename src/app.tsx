@@ -91,7 +91,10 @@ export const App: React.FC = () => {
         <li className='uk-width-1-2'>
           <div className='uk-card uk-card-default'>
             <div className='uk-card-header'>
-              <h3 className='uk-card-title'>Program</h3>
+              <h3 className='uk-card-title'>
+                Program
+                <a href='https://github.com/Meitinger/FrameworkAnalyzer/blob/main/README.md' target='_blank' rel='noreferrer' className='uk-align-right uk-margin-remove' title='Syntax'><span data-uk-icon='question' /></a>
+              </h3>
             </div>
             <div className='uk-card-body'>
               <div ref={programEditorDiv} className='uk-height-medium' />
