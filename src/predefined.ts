@@ -18,7 +18,7 @@
 
 export const predefinedFrameworks = {
   'Available Expressions Analysis': [
-    'define({',
+    'define<Expression>({',
     '    type: "forward",',
     '    init: expressions,',
     '    extremal: [],',
@@ -65,7 +65,7 @@ export const predefinedFrameworks = {
     ''
   ].join('\r\n'),
   'Very Busy Expressions Analysis': [
-    'define({',
+    'define<Expression>({',
     '    type: "backward",',
     '    init: expressions,',
     '    extremal: [],',

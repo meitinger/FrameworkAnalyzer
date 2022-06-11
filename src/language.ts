@@ -63,15 +63,22 @@ export class InlayHintsProvider implements monaco.languages.InlayHintsProvider {
 }
 
 export const registerLibraries = (): void => {
-  monaco.languages.typescript.typescriptDefaults.addExtraLib(program as string, './program.d.ts')
-  monaco.languages.typescript.typescriptDefaults.addExtraLib(framework as string, './framework.d.ts')
-  monaco.languages.typescript.typescriptDefaults.addExtraLib((environment as string).replaceAll('readonly', 'const').replace('export interface Environment', 'define global'), './environment.d.ts')
+  const patchup = (s: string): string[] => s.split('\n').map(s => s
+    .replace(/^import /, '// import ')
+    .replace(/^export /, 'declare global { ')
+    .replace('// export', '}'))
+  monaco.languages.typescript.typescriptDefaults.addExtraLib([
+    ...patchup(program as string),
+    ...patchup(framework as string),
+    ...patchup((environment as string).replaceAll('readonly', 'const').replace('interface Environment {', '')),
+    'export {}'
+  ].join('\n'))
 }
 
 export const registerLanguage = (): void => {
   const keywords = ['skip', 'if', 'then', 'else', 'while', 'do', 'not', 'and', 'or']
   const constants = ['true', 'false']
-  const operators = [':=', '==', '!=', '+', '-', '*', '/', '>', '<', '<=', '>=']
+  const operators = [':=', '==', '!=', '<=', '>=', '+', '-', '*', '/', '>', '<']
   const completions = keywords.map(keyword => ({
     text: keyword,
     type: monaco.languages.CompletionItemKind.Keyword

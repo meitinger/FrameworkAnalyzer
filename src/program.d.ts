@@ -32,7 +32,7 @@ interface ArithmenticExpression {
   readonly right: NumericExpression
 }
 
-export type NumericExpression = NumericConstantExpression | VariableExpression | ArithmenticExpression
+export type NumericExpression = NumericConstantExpression | VariableExpression | ArithmenticExpression // export
 
 interface BooleanConstantExpression {
   readonly type: 'true' | 'false'
@@ -55,9 +55,9 @@ interface LogicalExpression {
   readonly right: BooleanExpression
 }
 
-export type BooleanExpression = BooleanConstantExpression | NegationExpression | ComparisonExpression | LogicalExpression
+export type BooleanExpression = BooleanConstantExpression | NegationExpression | ComparisonExpression | LogicalExpression // export
 
-export type Expression = NumericExpression | BooleanExpression
+export type Expression = NumericExpression | BooleanExpression // export
 
 interface SkipStatement {
   readonly type: 'skip'
@@ -91,6 +91,6 @@ export type LabelledStatement = (SkipStatement | AssignStatement | IfStatement |
   readonly label: number
   readonly line: number
   readonly column: number
-}
+} // export
 
-export type Statement = LabelledStatement | SequenceStatement
+export type Statement = LabelledStatement | SequenceStatement // export

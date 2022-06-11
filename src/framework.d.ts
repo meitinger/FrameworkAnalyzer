@@ -26,4 +26,4 @@ export interface Framework<T> {
   readonly combine: (left: Iterable<T>, right: Iterable<T>) => Iterable<T>
   readonly transfer: (statement: LabelledStatement, value: Iterable<T>) => Iterable<T>
   readonly format: (value: T) => string
-}
+} // export
