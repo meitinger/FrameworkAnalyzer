@@ -29,9 +29,9 @@ const solver = (): Worker => new Worker(new URL('./solver.ts', import.meta.url),
 const runner = (): Worker => new Worker(new URL('./runner.ts', import.meta.url), { type: 'module' })
 const visualizer = (): Worker => new Worker(new URL('./visualizer.ts', import.meta.url), { type: 'module' })
 
-const programStoreName = 'program'
-const frameworkStoreName = 'framework'
-const variableStoreName = (variable: string): string => `variable_${variable}`
+const programStoreName = 'FrameworkAnalyzer/program'
+const frameworkStoreName = 'FrameworkAnalyzer/framework'
+const variableStoreName = (variable: string): string => `FrameworkAnalyzer/variable_${variable}`
 
 export const App: React.FC = () => {
   const gridDiv = useRef<HTMLUListElement>(null)
