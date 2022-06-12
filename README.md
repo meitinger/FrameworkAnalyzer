@@ -13,7 +13,8 @@ This project was created as part of a master's course in computer science at [UI
 
 ## Usage:
 
-First entered a WHILE program according to the following grammar:
+First enter a WHILE program according to the following grammar:
+(For ease of reading, white-spaces are not noted in the grammar.)
 
 ```bnf
 <program>       ::= <block>
@@ -46,7 +47,7 @@ label is shown inline in the editor. The flow graph is drawn as well.
 
 The program will be run and the input values of variables can be adjusted in
 the corresponding card.
-Cards can also be moved by dragging them on their headers.
+Cards can be rearranged by dragging them by their headers.
 
 In the framework card, enter the code for the monotone framework or pick one
 of the predefined frameworks.

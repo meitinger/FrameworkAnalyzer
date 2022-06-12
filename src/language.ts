@@ -66,7 +66,8 @@ export const registerLibraries = (): void => {
   const patchup = (s: string): string[] => s.split('\n').map(s => s
     .replace(/^import /, '// import ')
     .replace(/^export /, 'declare global { ')
-    .replace('// export', '}'))
+    .replace('// export', '}')
+  )
   monaco.languages.typescript.typescriptDefaults.addExtraLib([
     ...patchup(program as string),
     ...patchup(framework as string),
